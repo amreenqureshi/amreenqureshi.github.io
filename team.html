@@ -3,26 +3,186 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Research Team</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Project Report | Research Team</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-
+    <div class="particles-container" id="particles-js"></div>
+    
     <header>
-        <h1>Research Team</h1>
+        <nav>
+            <div class="logo">
+                <h1>Project Report</h1>
+            </div>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">About</a></li>
+                <li class="active"><a href="team.html">Research Team</a></li>
+                <li><a href="dashboard.html">Data Dashboard</a></li>
+                <li><a href="interviews.html">Interviews</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <nav>
-        <a href="index.html">About</a>
-        <a href="dashboard.html">Dashboard</a>
-        <a href="interviews.html">Interviews</a>
-        <a href="team.html">Research Team</a>
-    </nav>
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1 class="animate-on-scroll">Research Team</h1>
+                <p class="animate-on-scroll">Meet the dedicated professionals behind this research project.</p>
+            </div>
+        </section>
 
-    <div class="container">
-        <h2>Meet Our Researchers</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-    </div>
+        <section class="team-section">
+            <div class="container">
+                <h2 class="text-center animate-on-scroll">Principal Investigators</h2>
+                <div class="team-grid">
+                    <div class="team-member animate-on-scroll">
+                        <img src="https://via.placeholder.com/400x400" alt="Team Member" class="member-img">
+                        <div class="member-info">
+                            <h3>Dr. Jane Smith</h3>
+                            <div class="member-position">Lead Researcher</div>
+                            <p>Ph.D. in Data Science with 10+ years of experience in research methodology and data analysis.</p>
+                            <div class="social-links">
+                                <a href="#"><i class="fab fa-linkedin"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-member animate-on-scroll">
+                        <img src="https://via.placeholder.com/400x400" alt="Team Member" class="member-img">
+                        <div class="member-info">
+                            <h3>Prof. John Doe</h3>
+                            <div class="member-position">Research Director</div>
+                            <p>Professor of Applied Sciences with expertise in quantitative research and statistical analysis.</p>
+                            <div class="social-links">
+                                <a href="#"><i class="fab fa-linkedin"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
+                <h2 class="text-center animate-on-scroll" style="margin-top: 4rem;">Research Associates</h2>
+                <div class="team-grid">
+                    <div class="team-member animate-on-scroll">
+                        <img src="https://via.placeholder.com/400x400" alt="Team Member" class="member-img">
+                        <div class="member-info">
+                            <h3>Sarah Johnson</h3>
+                            <div class="member-position">Data Analyst</div>
+                            <p>Specializes in data visualization and statistical modeling for research projects.</p>
+                            <div class="social-links">
+                                <a href="#"><i class="fab fa-linkedin"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-member animate-on-scroll">
+                        <img src="https://via.placeholder.com/400x400" alt="Team Member" class="member-img">
+                        <div class="member-info">
+                            <h3>Michael Brown</h3>
+                            <div class="member-position">Research Assistant</div>
+                            <p>Graduate researcher focusing on qualitative data collection and interview methodologies.</p>
+                            <div class="social-links">
+                                <a href="#"><i class="fab fa-linkedin"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-member animate-on-scroll">
+                        <img src="https://via.placeholder.com/400x400" alt="Team Member" class="member-img">
+                        <div class="member-info">
+                            <h3>Emma Wilson</h3>
+                            <div class="member-position">Statistical Consultant</div>
+                            <p>Provides expertise in advanced statistical methods and experimental design.</p>
+                            <div class="social-links">
+                                <a href="#"><i class="fab fa-linkedin"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h2 class="text-center animate-on-scroll" style="margin-top: 4rem;">Technical Support</h2>
+                <div class="team-grid">
+                    <div class="team-member animate-on-scroll">
+                        <img src="https://via.placeholder.com/400x400" alt="Team Member" class="member-img">
+                        <div class="member-info">
+                            <h3>David Chen</h3>
+                            <div class="member-position">Data Engineer</div>
+                            <p>Responsible for database management and technical infrastructure for the research project.</p>
+                            <div class="social-links">
+                                <a href="#"><i class="fab fa-linkedin"></i></a>
+                                <a href="#"><i class="fab fa-github"></i></a>
+                                <a href="#"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-member animate-on-scroll">
+                        <img src="https://via.placeholder.com/400x400" alt="Team Member" class="member-img">
+                        <div class="member-info">
+                            <h3>Lisa Rodriguez</h3>
+                            <div class="member-position">Project Coordinator</div>
+                            <p>Manages logistics, scheduling, and communication between research team members.</p>
+                            <div class="social-links">
+                                <a href="#"><i class="fab fa-linkedin"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="acknowledgments">
+            <div class="container">
+                <h2 class="text-center animate-on-scroll">Acknowledgments</h2>
+                <div class="card animate-on-scroll">
+                    <p>We would like to express our gratitude to all the participants, organizations, and funding agencies that have contributed to this research effort. Special thanks to [Funding Organization] for their generous support.</p>
+                    <p>We also acknowledge the invaluable assistance of our administrative staff and the technical support team who made this project possible.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Project Report</h3>
+                    <p>A comprehensive research initiative exploring [project focus].</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">About</a></li>
+                        <li><a href="team.html">Research Team</a></li>
+                        <li><a href="dashboard.html">Data Dashboard</a></li>
+                        <li><a href="interviews.html">Interviews</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-envelope"></i> research@example.com</p>
+                    <p><i class="fas fa-phone"></i> (123) 456-7890</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Research Project. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
