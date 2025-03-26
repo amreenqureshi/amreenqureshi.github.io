@@ -3,35 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My GitHub Page</title>
+    <title>Advanced GitHub Page</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/scrollmagic/2.0.8/ScrollMagic.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <style>
-        /* Background Animation */
+        /* Smooth Background Animation */
         body {
             margin: 0;
             padding: 0;
             height: 100vh;
+            overflow-x: hidden;
+            font-family: 'Arial', sans-serif;
+            color: white;
+            background: radial-gradient(circle, #1e3c72, #2a5298, #3f5efb);
+            animation: bgShift 15s infinite alternate ease-in-out;
+        }
+
+        @keyframes bgShift {
+            0% { background-size: 100% 100%; }
+            100% { background-size: 200% 200%; }
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 15px 0;
+            text-align: center;
+            z-index: 1000;
+        }
+
+        .navbar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .navbar ul li {
+            display: inline;
+            margin: 0 20px;
+            position: relative;
+        }
+
+        .navbar ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+
+        .navbar ul li a:hover {
+            color: #3f5efb;
+        }
+
+        /* Dropdown Menu */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 10px;
+            min-width: 150px;
+            text-align: left;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a {
+            display: block;
+            color: white;
+            padding: 8px;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .dropdown-content a:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-direction: column;
             text-align: center;
-            font-family: Arial, sans-serif;
-            color: white;
-            background: linear-gradient(45deg, #1e3c72, #2a5298, #3f5efb);
-            background-size: 300% 300%;
-            animation: bgAnimation 10s infinite alternate ease-in-out;
+            transition: transform 0.5s ease-out;
         }
 
-        @keyframes bgAnimation {
-            0% { background-position: 0% 50%; }
-            100% { background-position: 100% 50%; }
-        }
-
-        /* Animated Heading */
-        h1 {
+        .hero h1 {
             font-size: 3rem;
-            letter-spacing: 2px;
-            opacity: 0;
-            animation: fadeIn 2s ease-in-out forwards, float 3s infinite alternate ease-in-out;
+            animation: fadeIn 2s ease-in-out forwards;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            animation: fadeIn 3s ease-in-out forwards;
         }
 
         @keyframes fadeIn {
@@ -39,52 +112,117 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        @keyframes float {
-            from { transform: translateY(0px); }
-            to { transform: translateY(10px); }
+        /* Zoom-in & Zoom-out Effect */
+        .zoom-section {
+            height: 80vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+            transition: transform 0.5s ease-in-out;
         }
 
-        /* Animated Button */
-        .btn {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 12px 25px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            color: white;
-            background: rgba(255, 255, 255, 0.2);
-            border: 2px solid white;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: all 0.3s ease-in-out;
+        /* Interactive 3D Card */
+        .card-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
         }
 
-        .btn:hover {
-            background: white;
-            color: #2a5298;
-            transform: scale(1.1);
+        .card {
+            width: 300px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            text-align: center;
+            padding: 20px;
+            transition: transform 0.3s ease-in-out;
         }
 
-        /* Smooth Fade-in for Paragraph */
-        p {
-            font-size: 1.2rem;
-            margin-top: 10px;
-            opacity: 0;
-            animation: fadeInText 2.5s ease-in-out forwards;
+        .card:hover {
+            transform: rotateY(10deg) scale(1.05);
         }
 
-        @keyframes fadeInText {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
     </style>
 </head>
 <body>
-    <div>
-        <h1>Welcome to My GitHub Page</h1>
-        <p>Experience smooth animations and a beautiful gradient background.</p>
-        <a href="https://github.com/" class="btn">Explore More</a>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li class="dropdown">
+                <a href="#">Features ▼</a>
+                <div class="dropdown-content">
+                    <a href="#">Animations</a>
+                    <a href="#">Effects</a>
+                    <a href="#">UI Components</a>
+                </div>
+            </li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero" id="hero">
+        <h1>Welcome to My Interactive Page</h1>
+        <p>Explore dynamic animations, smooth transitions, and interactive components.</p>
     </div>
+
+    <!-- Zoom-in & Zoom-out Effect -->
+    <div class="zoom-section" id="zoom">
+        Scroll to see the effect
+    </div>
+
+    <!-- 3D Hover Card -->
+    <div class="card-container">
+        <div class="card">
+            <h2>3D Interactive Card</h2>
+            <p>Hover over this card to see the 3D effect.</p>
+        </div>
+    </div>
+
+    <script>
+        // Zoom-in & Zoom-out Effect on Scroll
+        const heroSection = document.getElementById('hero');
+        const zoomSection = document.getElementById('zoom');
+        window.addEventListener('scroll', () => {
+            let scrollY = window.scrollY;
+            heroSection.style.transform = `scale(${1 + scrollY * 0.0005})`;
+            zoomSection.style.transform = `scale(${1 - scrollY * 0.0005})`;
+        });
+
+        // Floating Particles Background (Using Three.js)
+        let scene = new THREE.Scene();
+        let camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        let renderer = new THREE.WebGLRenderer({ alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        let particles = new THREE.Geometry();
+        for (let i = 0; i < 500; i++) {
+            let vertex = new THREE.Vector3(
+                (Math.random() * 2 - 1) * 500,
+                (Math.random() * 2 - 1) * 500,
+                (Math.random() * 2 - 1) * 500
+            );
+            particles.vertices.push(vertex);
+        }
+
+        let particleMaterial = new THREE.PointsMaterial({ color: 0xffffff, size: 2 });
+        let particleSystem = new THREE.Points(particles, particleMaterial);
+        scene.add(particleSystem);
+
+        camera.position.z = 300;
+        function animate() {
+            requestAnimationFrame(animate);
+            particleSystem.rotation.y += 0.001;
+            renderer.render(scene, camera);
+        }
+        animate();
+    </script>
+
 </body>
 </html>
