@@ -3,26 +3,184 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interviews</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Project Report | Interviews</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-
+    <div class="particles-container" id="particles-js"></div>
+    
     <header>
-        <h1>Interviews</h1>
+        <nav>
+            <div class="logo">
+                <h1>Project Report</h1>
+            </div>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">About</a></li>
+                <li><a href="team.html">Research Team</a></li>
+                <li><a href="dashboard.html">Data Dashboard</a></li>
+                <li class="active"><a href="interviews.html">Interviews</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <nav>
-        <a href="index.html">About</a>
-        <a href="dashboard.html">Dashboard</a>
-        <a href="interviews.html">Interviews</a>
-        <a href="team.html">Research Team</a>
-    </nav>
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1 class="animate-on-scroll">Interviews</h1>
+                <p class="animate-on-scroll">Insights and perspectives from key stakeholders and participants.</p>
+            </div>
+        </section>
 
-    <div class="container">
-        <h2>Key Interviews</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-    </div>
+        <section class="interviews-section">
+            <div class="container">
+                <h2 class="animate-on-scroll">Expert Interviews</h2>
+                
+                <div class="interview-item animate-on-scroll">
+                    <div class="interview-header">
+                        <img src="https://via.placeholder.com/150" alt="Interviewee" class="interview-avatar">
+                        <div class="interview-meta">
+                            <h3>Dr. Emily Williams</h3>
+                            <div class="interview-position">Domain Expert</div>
+                            <div class="interview-date">Interviewed on March 12, 2025</div>
+                        </div>
+                    </div>
+                    <div class="interview-content">
+                        <p><strong>Q: What do you believe are the most significant implications of this research?</strong></p>
+                        <p>A: The findings from this research have far-reaching implications for how we understand [specific domain]. What's particularly notable is the correlation between [variable A] and [variable B], which suggests that conventional approaches may need reconsideration. I believe this opens up new avenues for both theoretical frameworks and practical applications.</p>
+                        
+                        <p><strong>Q: How does this research compare to previous work in the field?</strong></p>
+                        <p>A: This study takes a more comprehensive approach compared to previous research, which often focused on isolated aspects of the problem. By incorporating multiple variables and utilizing a mixed-methods design, the team has provided a more nuanced understanding of the complex interactions at play. The longitudinal element is particularly valuable, as it allows us to observe patterns that might not be apparent in cross-sectional studies.</p>
+                        
+                        <p><strong>Q: What future directions would you recommend based on these findings?</strong></p>
+                        <p>A: I think the next logical step would be to explore the mechanisms behind the observed relationships. Understanding the "why" and "how" would complement the current findings, which establish the "what." Additionally, it would be valuable to examine these patterns across different contexts to assess their generalizability. There's also potential for translational research that could bridge the gap between these theoretical insights and practical applications.</p>
+                    </div>
+                </div>
+                
+                <div class="interview-item animate-on-scroll">
+                    <div class="interview-header">
+                        <img src="https://via.placeholder.com/150" alt="Interviewee" class="interview-avatar">
+                        <div class="interview-meta">
+                            <h3>Prof. Robert Chen</h3>
+                            <div class="interview-position">Research Methodologist</div>
+                            <div class="interview-date">Interviewed on March 15, 2025</div>
+                        </div>
+                    </div>
+                    <div class="interview-content">
+                        <p><strong>Q: What were the methodological challenges in this research, and how were they addressed?</strong></p>
+                        <p>A: One of the primary challenges was ensuring representative sampling across diverse populations. The team implemented a stratified random sampling approach that balanced demographic factors with contextual variables. Another challenge was integrating qualitative and quantitative data in a meaningful way. The sequential explanatory design proved effective, allowing quantitative findings to inform the qualitative inquiry, which in turn provided depth and nuance to the statistical patterns.</p>
+                        
+                        <p><strong>Q: How confident are you in the validity of the findings?</strong></p>
+                        <p>A: The methodological rigor demonstrated in this study inspires considerable confidence. The team employed triangulation across multiple data sources, member checking for qualitative components, and robust statistical analyses with appropriate controls for quantitative elements. The transparency in reporting limitations and potential confounding factors also strengthens the credibility of the findings. That said, as with any research, these findings represent a step in our understanding rather than a definitive conclusion.</p>
+                        
+                        <p><strong>Q: What methodological innovations in this study might benefit future research?</strong></p>
+                        <p>A: The novel approach to participant engagement throughout the research process stands out as particularly innovative. By incorporating participant feedback at multiple stages, the study achieved a level of ecological validity that is often missing in more controlled designs. Additionally, the data visualization techniques developed for this project offer new ways to represent complex relationships that could be valuable across various research domains.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
+        <section class="interviews-section">
+            <div class="container">
+                <h2 class="animate-on-scroll">Participant Perspectives</h2>
+                
+                <div class="interview-item animate-on-scroll">
+                    <div class="interview-header">
+                        <img src="https://via.placeholder.com/150" alt="Interviewee" class="interview-avatar">
+                        <div class="interview-meta">
+                            <h3>Sarah Thompson</h3>
+                            <div class="interview-position">Study Participant</div>
+                            <div class="interview-date">Interviewed on March 18, 2025</div>
+                        </div>
+                    </div>
+                    <div class="interview-content">
+                        <p><strong>Q: What motivated you to participate in this research study?</strong></p>
+                        <p>A: I've always been interested in [research topic], and when I heard about this project, I saw it as an opportunity to contribute to knowledge in this area. My personal experiences with [related issue] made the research questions particularly relevant to me, and I was curious to see how my experiences compared with others. Also, the transparency about how the findings would be used and shared was reassuring—I felt my participation would genuinely make a difference.</p>
+                        
+                        <p><strong>Q: How would you describe your experience as a participant?</strong></p>
+                        <p>A: Overall, it was quite positive. The research team was professional and respectful, making sure I understood each step of the process. The mixed-methods approach meant I could share both structured responses and more personal reflections, which I appreciated. There were moments when the questions prompted deeper reflection than I had expected, which was occasionally challenging but ultimately rewarding. I felt my perspective was genuinely valued.</p>
+                        
+                        <p><strong>Q: Has participating in this research changed your perspective in any way?</strong></p>
+                        <p>A: Definitely. Engaging with the questions and reflecting on my experiences has given me new insights into [specific aspect]. I've become more aware of patterns in my own [behaviors/thoughts/experiences] that I hadn't fully recognized before. Also, the preliminary findings that were shared with participants showed me that many others have similar experiences, which was validating. I think I now have a more nuanced understanding of [research topic] than I did before.</p>
+                    </div>
+                </div>
+                
+                <div class="interview-item animate-on-scroll">
+                    <div class="interview-header">
+                        <img src="https://via.placeholder.com/150" alt="Interviewee" class="interview-avatar">
+                        <div class="interview-meta">
+                            <h3>Marcus Johnson</h3>
+                            <div class="interview-position">Community Stakeholder</div>
+                            <div class="interview-date">Interviewed on March 20, 2025</div>
+                        </div>
+                    </div>
+                    <div class="interview-content">
+                        <p><strong>Q: How do you see this research impacting your community?</strong></p>
+                        <p>A: This research addresses issues that have been present in our community for years but haven't been systematically studied. The findings provide empirical support for what many community members have observed anecdotally, which strengthens our advocacy efforts. I believe this research could inform more effective policies and programs that respond to our community's specific needs rather than generic approaches that don't account for our unique context.</p>
+                        
+                        <p><strong>Q: What aspects of the research findings resonated most with your community's experiences?</strong></p>
+                        <p>A: The findings regarding [specific finding] particularly resonated with us. This phenomenon has been part of our lived experience, but seeing it documented through rigorous research validates our perspectives and provides a language to discuss these issues with policymakers and service providers. The intersectional analysis also captured the complexity of experiences within our community, avoiding oversimplification of our diverse realities.</p>
+                        
+                        <p><strong>Q: What would you like to see happen with this research moving forward?</strong></p>
+                        <p>A: I hope this research doesn't just remain in academic circles but is translated into tangible actions. We need collaborative efforts between researchers, community organizations, and policymakers to develop and implement solutions informed by these findings. I'd also like to see continued research that builds on these insights, perhaps exploring [suggested direction] or examining changes over time. Community involvement in these next steps would be essential to ensure relevance and responsiveness.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="methodology-section">
+            <div class="container">
+                <h2 class="text-center animate-on-scroll">Interview Methodology</h2>
+                <div class="card animate-on-scroll">
+                    <p>All interviews were conducted using a semi-structured protocol designed to elicit rich, detailed responses while allowing flexibility to explore emerging themes. Participants were selected using [sampling method] to ensure diverse perspectives and experiences.</p>
+                    <p>Interviews were recorded with consent, transcribed verbatim, and analyzed using [analysis method]. Quotes presented on this page have been edited for clarity while preserving the original meaning. All participants reviewed their interview excerpts prior to publication.</p>
+                    <p>This qualitative component complements the quantitative aspects of our research by providing context, depth, and lived experiences that illuminate the statistical findings.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="download-section">
+            <div class="container text-center">
+                <h2 class="animate-on-scroll">Complete Interview Transcripts</h2>
+                <p class="animate-on-scroll">For researchers and those interested in the complete interview data, full anonymized transcripts are available for download.</p>
+                <a href="#" class="btn animate-on-scroll"><i class="fas fa-download"></i> Download Transcripts (PDF)</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Project Report</h3>
+                    <p>A comprehensive research initiative exploring [project focus].</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">About</a></li>
+                        <li><a href="team.html">Research Team</a></li>
+                        <li><a href="dashboard.html">Data Dashboard</a></li>
+                        <li><a href="interviews.html">Interviews</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-envelope"></i> research@example.com</p>
+                    <p><i class="fas fa-phone"></i> (123) 456-7890</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Research Project. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
