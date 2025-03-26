@@ -1,9 +1,10 @@
 /* styles.css */
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(to right, #1e3c72, #2a5298);
+  color: white;
+  padding: 20px;
   margin: 0;
-  padding: 0;
-  background: #f8f9fa; /* Light grey background */
 }
 
 .container {
