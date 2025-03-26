@@ -147,6 +147,43 @@
             </div>
         </section>
 
+        <section class="survey-section">
+            <div class="container">
+                <h2 class="text-center animate-on-scroll">Health Survey Results</h2>
+                <div class="dashboard-container animate-on-scroll">
+                    <div class="survey-controls">
+                        <div class="survey-control-item">
+                            <label><strong>Self-Rated Health Category</strong></label>
+                            <div class="custom-dropdown">
+                                <button class="dropdown-button" id="questionSelectButton" type="button" aria-haspopup="listbox" aria-expanded="false" data-value="health">
+                                    <span class="dropdown-text">General Overall Health</span>
+                                    <span class="dropdown-icon">
+                                        <i class="fas fa-chevron-down"></i>
+                                    </span>
+                                </button>
+                                <div class="dropdown-list" id="questionSelectList">
+                                    <div class="dropdown-option" data-value="health">General Overall Health</div>
+                                    <div class="dropdown-option" data-value="physical_health">Days Physical Health Was Not Good</div>
+                                    <div class="dropdown-option" data-value="mental_health">Days Mental Health Was Not Good</div>
+                                    <div class="dropdown-option" data-value="worried">Days You Felt Worried, Tense, or Anxious</div>
+                                    <div class="dropdown-option" data-value="sad">Days You Felt Sad, Blue, or Depressed</div>
+                                    <div class="dropdown-option" data-value="activities">Days Health Kept You From Usual Activities</div>
+                                    <div class="dropdown-option" data-value="impairment">Limited in Activity Because of Impairment</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="survey-control-item" id="filterOptions">
+                            <label><strong>Sources</strong></label>
+                            <!-- Checkboxes will be injected here by script -->
+                        </div>
+                    </div>
+                    
+                    <div id="surveyChart" class="survey-chart-container"></div>
+                </div>
+            </div>
+        </section>
+
         <section class="download-section">
             <div class="container text-center">
                 <h2 class="animate-on-scroll">Download Full Report</h2>
@@ -186,9 +223,374 @@
 
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script src="js/main.js"></script>
 
+    <script>
+        // Survey visualization script
+        document.addEventListener('DOMContentLoaded', function() {
+            // Updated colors using the project's color scheme
+            const colors = {
+                'Poor health': 'rgba(77, 116, 230, 0.7)',
+                'Good health': 'rgba(52, 152, 219, 0.7)',
+                'Less than one week': 'rgba(77, 116, 230, 0.7)',
+                'More than one week': 'rgba(52, 152, 219, 0.7)',
+                'Yes': 'rgba(77, 116, 230, 0.7)',
+                'No': 'rgba(52, 152, 219, 0.7)'
+            };
+
+            const data = {
+                health: {
+                    group: {
+                        labels: ['All', 'Agency', 'Social Media', 'Self-Reported CSE', 'No CSE Self-Report'],
+                        'Poor health': [26.9, 21.1, 32.9, 31.1, 22.7],
+                        'Good health': [73.1, 78.9, 67.1, 68.9, 77.3]
+                    }
+                },
+                physical_health: {
+                    group: {
+                        labels: ['All', 'Agency', 'Social Media', 'Self-Reported CSE', 'No CSE Self-Report'],
+                        'Less than one week': [77.5, 83.1, 71.8, 73.1, 82],
+                        'More than one week': [22.5, 16.9, 28.2, 26.9, 18]
+                    }
+                },
+                mental_health: {
+                    group: {
+                        labels: ['All', 'Agency', 'Social Media', 'Self-Reported CSE', 'No CSE Self-Report'],
+                        'Less than one week': [49.5, 57.9, 40.7, 46.3, 52.8],
+                        'More than one week': [50.5, 42, 59.3, 53.8, 47.2]
+                    }
+                },
+                worried: {
+                    group: {
+                        labels: ['All', 'Agency', 'Social Media', 'Self-Reported CSE', 'No CSE Self-Report'],
+                        'Less than one week': [46.9, 57.1, 36.6, 43.8, 50],
+                        'More than one week': [53.1, 42.9, 63.5, 56.2, 50]
+                    }
+                },
+                sad: {
+                    group: {
+                        labels: ['All', 'Agency', 'Social Media', 'Self-Reported CSE', 'No CSE Self-Report'],
+                        'Less than one week': [52.4, 56.5, 48.2, 46, 46],
+                        'More than one week': [47.6, 43.5, 51.8, 54, 41.3]
+                    }
+                },
+                activities: {
+                    group: {
+                        labels: ['All', 'Agency', 'Social Media', 'Self-Reported CSE', 'No CSE Self-Report'],
+                        'Less than one week': [67.7, 74.6, 60.6, 61.3, 74.2],
+                        'More than one week': [32.3, 25.4, 39.4, 38.7, 25.8]
+                    }
+                },
+                impairment: {
+                    group: {
+                        labels: ['All', 'Agency', 'Social Media', 'Self-Reported CSE', 'No CSE Self-Report'],
+                        'No': [69.7, 81, 58.1, 68, 71.3],
+                        'Yes': [30.3, 18.9, 41.9, 32, 28.7]
+                    }
+                }
+            };
+
+            function renderFilterOptions(group) {
+                const question = document.getElementById("questionSelectButton").getAttribute("data-value");
+                const labels = data[question][group].labels;
+                const container = document.getElementById('filterOptions');
+                let html = '<label><strong>Sources</strong></label>';
+                
+                labels.forEach(label => {
+                    html += `<div class="checkbox-wrapper">
+                                <input type="checkbox" id="${label.replace(/\s+/g, '_')}" class="groupCheckbox" value="${label}" checked>
+                                <label for="${label.replace(/\s+/g, '_')}">${label}</label>
+                            </div>`;
+                });
+                
+                container.innerHTML = html;
+            }
+
+            function renderChart() {
+                const question = document.getElementById("questionSelectButton").getAttribute("data-value");
+                const group = 'group';
+                const selectedGroups = Array.from(document.querySelectorAll(".groupCheckbox:checked")).map(cb => cb.value);
+                const dataset = data[question][group];
+
+                if (selectedGroups.length === 0) {
+                    document.getElementById("surveyChart").innerHTML = '<div class="no-data-message">Please select at least one source to display data</div>';
+                    return;
+                }
+
+                const traces = Object.keys(dataset)
+                    .filter(key => key !== 'labels')
+                    .map(category => {
+                        return {
+                            x: dataset[category].filter((_, i) => selectedGroups.includes(dataset.labels[i])),
+                            y: dataset.labels.filter(label => selectedGroups.includes(label)),
+                            name: category,
+                            orientation: 'h',
+                            type: 'bar',
+                            marker: { 
+                                color: colors[category],
+                                line: { color: '#2c3e50', width: 1 }
+                            },
+                            text: dataset[category].map(value => `${value}%`),
+                            textposition: 'inside',
+                            hoverinfo: 'text',
+                            textfont: {
+                                color: 'white',
+                                size: 14
+                            }
+                        };
+                    });
+                
+                const questionText = document.getElementById("questionSelectButton").querySelector("span.dropdown-text").textContent;
+                const layout = {
+                    title: {
+                        text: `Survey Results: ${questionText}`,
+                        font: {
+                            family: 'Playfair Display, serif',
+                            size: 24,
+                            color: '#2c3e50'
+                        }
+                    },
+                    barmode: 'group',
+                    bargap: 0.15,
+                    bargroupgap: 0.2,
+                    xaxis: { 
+                        title: 'Percentage', 
+                        range: [0, 100], 
+                        ticksuffix: '%',
+                        tickfont: {
+                            family: 'Roboto, sans-serif',
+                            size: 12,
+                            color: '#333'
+                        }
+                    },
+                    yaxis: { 
+                        title: 'Source',
+                        automargin: true,
+                        tickfont: {
+                            family: 'Roboto, sans-serif',
+                            size: 12,
+                            color: '#333'
+                        }
+                    },
+                    height: 500,
+                    margin: { l: 150, r: 20, t: 80, b: 80 },
+                    legend: { 
+                        orientation: 'h', 
+                        y: -0.2,
+                        font: {
+                            family: 'Roboto, sans-serif',
+                            size: 12
+                        }
+                    },
+                    font: { 
+                        family: 'Roboto, sans-serif',
+                        size: 12 
+                    },
+                    paper_bgcolor: 'rgba(255,255,255,0.8)',
+                    plot_bgcolor: 'rgba(255,255,255,0.8)'
+                };
+
+                Plotly.newPlot("surveyChart", traces, layout, {responsive: true});
+            }
+
+            // Toggle dropdown list on button click
+            document.getElementById("questionSelectButton").addEventListener("click", function(e) {
+                e.stopPropagation();
+                const list = document.getElementById("questionSelectList");
+                list.classList.toggle("show");
+                this.querySelector('.dropdown-icon i').classList.toggle('fa-chevron-up');
+                this.querySelector('.dropdown-icon i').classList.toggle('fa-chevron-down');
+            });
+
+            // Option selection event
+            document.querySelectorAll(".dropdown-option").forEach(option => {
+                option.addEventListener("click", function(e) {
+                    const value = this.getAttribute("data-value");
+                    const text = this.textContent;
+                    document.getElementById("questionSelectButton").setAttribute("data-value", value);
+                    document.getElementById("questionSelectButton").querySelector("span.dropdown-text").textContent = text;
+                    document.getElementById("questionSelectList").classList.remove("show");
+                    document.querySelector('.dropdown-icon i').classList.remove('fa-chevron-up');
+                    document.querySelector('.dropdown-icon i').classList.add('fa-chevron-down');
+                    renderFilterOptions('group');
+                    setTimeout(renderChart, 10);
+                });
+            });
+
+            // Close dropdown when clicking outside
+            document.addEventListener("click", function(e) {
+                const button = document.getElementById("questionSelectButton");
+                const list = document.getElementById("questionSelectList");
+                if (!button.contains(e.target) && !list.contains(e.target)) {
+                    list.classList.remove("show");
+                    if (document.querySelector('.dropdown-icon i.fa-chevron-up')) {
+                        document.querySelector('.dropdown-icon i').classList.remove('fa-chevron-up');
+                        document.querySelector('.dropdown-icon i').classList.add('fa-chevron-down');
+                    }
+                }
+            });
+
+            // Update chart when checkboxes change
+            document.addEventListener("change", e => {
+                if (e.target.classList.contains("groupCheckbox")) {
+                    renderChart();
+                }
+            });
+
+            // Init
+            if (document.getElementById("questionSelectButton")) {
+                renderFilterOptions('group');
+                renderChart();
+            }
+        });
+    </script>
+
     <style>
+        .survey-section {
+            background-color: var(--background-color);
+            padding: 2rem 0;
+        }
+
+        .survey-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        .survey-control-item {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .survey-control-item label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--secondary-color);
+        }
+
+        .custom-dropdown {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .dropdown-button {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 0.8rem 1rem;
+            background-color: var(--white);
+            border: 2px solid var(--primary-color);
+            border-radius: var(--border-radius);
+            font-family: 'Roboto', sans-serif;
+            font-size: 1rem;
+            color: var(--text-color);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .dropdown-button:hover {
+            background-color: rgba(77, 116, 230, 0.05);
+        }
+
+        .dropdown-button:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(77, 116, 230, 0.3);
+        }
+
+        .dropdown-text {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .dropdown-icon {
+            margin-left: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .dropdown-list {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            max-height: 250px;
+            overflow-y: auto;
+            background-color: var(--white);
+            border: 1px solid var(--light-gray);
+            border-radius: var(--border-radius);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+            z-index: 10;
+            margin-top: 0.5rem;
+        }
+
+        .dropdown-list.show {
+            display: block;
+        }
+
+        .dropdown-option {
+            padding: 0.8rem 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .dropdown-option:hover {
+            background-color: rgba(77, 116, 230, 0.1);
+        }
+
+        #filterOptions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem 1.5rem;
+        }
+
+        #filterOptions > label {
+            flex-basis: 100%;
+        }
+
+        .checkbox-wrapper {
+            display: flex;
+            align-items: center;
+            margin-top: 0.5rem;
+        }
+
+        .checkbox-wrapper input[type="checkbox"] {
+            margin-right: 0.5rem;
+            cursor: pointer;
+        }
+
+        .checkbox-wrapper label {
+            margin-bottom: 0 !important;
+            cursor: pointer;
+        }
+
+        .survey-chart-container {
+            height: 500px;
+            margin-top: 2rem;
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 1rem;
+        }
+
+        .no-data-message {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+            font-style: italic;
+        }
+        
         .stats-number {
             font-size: 2.5rem;
             font-weight: 700;
