@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My GitHub Page</title>
+    <style>
+        /* Background Animation */
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            color: white;
+            background: linear-gradient(45deg, #1e3c72, #2a5298, #3f5efb);
+            background-size: 300% 300%;
+            animation: bgAnimation 10s infinite alternate ease-in-out;
+        }
+
+        @keyframes bgAnimation {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        /* Animated Heading */
+        h1 {
+            font-size: 3rem;
+            letter-spacing: 2px;
+            opacity: 0;
+            animation: fadeIn 2s ease-in-out forwards, float 3s infinite alternate ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes float {
+            from { transform: translateY(0px); }
+            to { transform: translateY(10px); }
+        }
+
+        /* Animated Button */
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 25px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: white;
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid white;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .btn:hover {
+            background: white;
+            color: #2a5298;
+            transform: scale(1.1);
+        }
+
+        /* Smooth Fade-in for Paragraph */
+        p {
+            font-size: 1.2rem;
+            margin-top: 10px;
+            opacity: 0;
+            animation: fadeInText 2.5s ease-in-out forwards;
+        }
+
+        @keyframes fadeInText {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Welcome to My GitHub Page</h1>
+        <p>Experience smooth animations and a beautiful gradient background.</p>
+        <a href="https://github.com/" class="btn">Explore More</a>
+    </div>
+</body>
+</html>
